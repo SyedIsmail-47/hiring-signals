@@ -1,0 +1,11 @@
+node_modules
+storage
+apify_storage
+.tmp-*
+.idea
+.DS_Store
+live-*.json
+*.log
+smoke-*.json
+.env
+.env.*

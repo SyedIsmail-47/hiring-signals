@@ -1,0 +1,12 @@
+{
+    "actorOutputSchemaVersion": 1,
+    "title": "Hiring signal records",
+    "description": "One record per company checked in this run.",
+    "properties": {
+        "results": {
+            "type": "string",
+            "title": "Hiring signals",
+            "template": "{{links.apiDefaultDatasetUrl}}/items"
+        }
+    }
+}

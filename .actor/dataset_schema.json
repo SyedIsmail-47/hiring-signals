@@ -1,0 +1,190 @@
+{
+    "actorSpecification": 1,
+    "title": "Hiring signals",
+    "description": "One record per company checked in this run.",
+    "fields": {
+        "type": "object",
+        "properties": {
+            "name": {
+                "type": "string",
+                "title": "Company",
+                "description": "Company display name from the input."
+            },
+            "domain": {
+                "type": "string",
+                "title": "Domain",
+                "description": "Normalized company domain."
+            },
+            "source": {
+                "type": "string",
+                "title": "ATS source",
+                "description": "Which public board returned jobs: greenhouse, lever, ashby, or empty when none matched."
+            },
+            "boardToken": {
+                "type": "string",
+                "title": "Board token",
+                "description": "ATS board slug that worked for this company. Empty when none matched."
+            },
+            "totalRoles": {
+                "type": "integer",
+                "title": "Total open roles",
+                "description": "All published roles on the board. Zero when no board was found."
+            },
+            "matchedRoles": {
+                "type": "integer",
+                "title": "Matched roles",
+                "description": "Open roles whose title matched a tracked function."
+            },
+            "functionBreakdown": {
+                "type": "object",
+                "title": "Function breakdown",
+                "description": "Matched role counts by tracked function."
+            },
+            "isBaseline": {
+                "type": "boolean",
+                "title": "Baseline",
+                "description": "True when this domain had no prior Key-Value state. Baseline runs do not treat open roles as new."
+            },
+            "newRolesCount": {
+                "type": "integer",
+                "title": "New role IDs",
+                "description": "Matched job IDs present now that were absent from the previous stored set. Zero on baseline."
+            },
+            "removedRolesCount": {
+                "type": "integer",
+                "title": "Removed role IDs",
+                "description": "Matched job IDs from the previous set that are no longer open. Zero on baseline."
+            },
+            "newRolesByFunction": {
+                "type": "object",
+                "title": "New roles by function",
+                "description": "New job IDs grouped by tracked function."
+            },
+            "signalScore": {
+                "type": "number",
+                "title": "Signal score",
+                "description": "Weighted score (continuing × 0.5 + new × 3). Baseline treats all matched IDs as continuing so unchanged boards score the same every run."
+            },
+            "meetsThreshold": {
+                "type": "boolean",
+                "title": "Meets threshold",
+                "description": "True when signalScore is at least signalThreshold."
+            },
+            "signalThreshold": {
+                "type": "integer",
+                "title": "Signal threshold",
+                "description": "Threshold used for this run."
+            },
+            "verifiedContact": {
+                "type": "string",
+                "title": "Verified contact",
+                "description": "Department email that verified as valid or risky. Empty when none worked or lookup was skipped."
+            },
+            "contactStatus": {
+                "type": "string",
+                "title": "Contact status",
+                "description": "valid, risky, not_found, unknown, or skipped."
+            },
+            "contactSource": {
+                "type": "string",
+                "title": "Contact source",
+                "description": "Local-part pattern that worked: careers, jobs, recruiting, or hr. Empty when none."
+            },
+            "matchedTitles": {
+                "type": "array",
+                "title": "Matched titles",
+                "description": "Titles that matched a tracked function, with function and ATS job ID."
+            }
+        }
+    },
+    "views": {
+        "overview": {
+            "title": "Signals",
+            "description": "One row per company.",
+            "transformation": {
+                "fields": [
+                    "name",
+                    "domain",
+                    "source",
+                    "boardToken",
+                    "totalRoles",
+                    "matchedRoles",
+                    "newRolesCount",
+                    "removedRolesCount",
+                    "signalScore",
+                    "meetsThreshold",
+                    "isBaseline",
+                    "verifiedContact",
+                    "contactStatus",
+                    "contactSource",
+                    "functionBreakdown"
+                ]
+            },
+            "display": {
+                "component": "table",
+                "properties": {
+                    "name": {
+                        "label": "Company",
+                        "format": "text"
+                    },
+                    "domain": {
+                        "label": "Domain",
+                        "format": "text"
+                    },
+                    "source": {
+                        "label": "Source",
+                        "format": "text"
+                    },
+                    "boardToken": {
+                        "label": "Board token",
+                        "format": "text"
+                    },
+                    "totalRoles": {
+                        "label": "Total roles",
+                        "format": "number"
+                    },
+                    "matchedRoles": {
+                        "label": "Matched",
+                        "format": "number"
+                    },
+                    "newRolesCount": {
+                        "label": "New IDs",
+                        "format": "number"
+                    },
+                    "removedRolesCount": {
+                        "label": "Removed IDs",
+                        "format": "number"
+                    },
+                    "signalScore": {
+                        "label": "Score",
+                        "format": "number"
+                    },
+                    "meetsThreshold": {
+                        "label": "Signal",
+                        "format": "boolean"
+                    },
+                    "isBaseline": {
+                        "label": "Baseline",
+                        "format": "boolean"
+                    },
+                    "verifiedContact": {
+                        "label": "Contact",
+                        "format": "text"
+                    },
+                    "contactStatus": {
+                        "label": "Contact status",
+                        "format": "text"
+                    },
+                    "contactSource": {
+                        "label": "Contact source",
+                        "format": "text"
+                    },
+                    "functionBreakdown": {
+                        "label": "Breakdown",
+                        "format": "object"
+                    }
+                }
+            }
+        }
+    }
+}

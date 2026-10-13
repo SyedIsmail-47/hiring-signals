@@ -1,0 +1,65 @@
+{
+    "title": "Hiring Signals + Verified Contacts",
+    "description": "Check public ATS boards for open roles in the functions you track. One company per row. Boards are public-by-design (Greenhouse, Lever, Ashby).",
+    "type": "object",
+    "schemaVersion": 1,
+    "properties": {
+        "companies": {
+            "title": "Companies",
+            "type": "array",
+            "description": "Companies to check. Each row needs a display name and a domain used to derive the ATS board token.",
+            "editor": "schemaBased",
+            "minItems": 1,
+            "default": [
+                {
+                    "name": "Stripe",
+                    "domain": "stripe.com"
+                }
+            ],
+            "prefill": [
+                {
+                    "name": "Stripe",
+                    "domain": "stripe.com"
+                }
+            ],
+            "items": {
+                "type": "object",
+                "properties": {
+                    "name": {
+                        "title": "Company name",
+                        "type": "string",
+                        "description": "Display name, also used as a board-token candidate.",
+                        "editor": "textfield",
+                        "minLength": 1
+                    },
+                    "domain": {
+                        "title": "Domain",
+                        "type": "string",
+                        "description": "Company hostname, such as stripe.com. www is ignored.",
+                        "editor": "textfield",
+                        "minLength": 1
+                    }
+                },
+                "required": ["name", "domain"]
+            }
+        },
+        "trackedFunctions": {
+            "title": "Tracked functions",
+            "type": "array",
+            "description": "Role functions to count toward a hiring signal. Matching is keyword-based on the job title. Allowed values: sales, engineering, marketing, product, design, data, finance, people, operations, support, legal.",
+            "editor": "stringList",
+            "default": ["sales", "engineering", "marketing"],
+            "prefill": ["sales", "engineering", "marketing"]
+        },
+        "signalThreshold": {
+            "title": "Signal threshold",
+            "type": "integer",
+            "description": "Minimum number of open roles that match a tracked function before the company counts as a hiring signal. Contact lookup (later) only runs when this is met.",
+            "default": 2,
+            "prefill": 2,
+            "minimum": 1,
+            "maximum": 100
+        }
+    },
+    "required": ["companies"]
+}

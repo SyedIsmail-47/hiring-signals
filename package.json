@@ -1,0 +1,16 @@
+{
+    "name": "hiring-signals",
+    "version": "0.1.0",
+    "type": "module",
+    "description": "Detect hiring signals from public ATS boards and attach a verified department contact when the signal clears the threshold.",
+    "engines": {
+        "node": ">=18"
+    },
+    "scripts": {
+        "start": "node src/main.js",
+        "test": "node --test"
+    },
+    "dependencies": {
+        "apify": "^3.4.2"
+    }
+}
