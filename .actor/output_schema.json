@@ -1,7 +1,6 @@
 {
     "actorOutputSchemaVersion": 1,
-    "title": "Hiring signal records",
-    "description": "One record per company checked in this run.",
+    "title": "Output schema of the Hiring Signals + Verified Contacts",
     "properties": {
         "results": {
             "type": "string",

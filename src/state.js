@@ -22,7 +22,7 @@ export const NEW_ROLE_WEIGHT = 3;
  * @param {string} domain
  */
 export function companyStateKey(domain) {
-    return `company:${String(domain).toLowerCase()}`;
+    return `company-${String(domain).toLowerCase()}`;
 }
 
 /**

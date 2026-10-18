@@ -2,7 +2,7 @@
     "actorSpecification": 1,
     "name": "hiring-signals",
     "title": "Hiring Signals + Verified Contacts",
-    "description": "Find hiring signals on public Greenhouse, Lever, and Ashby boards by tracking open roles in sales, engineering, and marketing. Later runs will attach a verified department contact when the signal clears the threshold.",
+    "description": "Watch public Greenhouse, Lever, and Ashby job boards for hiring in the functions you care about. When a company clears your signal threshold, the run checks a department contact and attaches it. You pay only for companies that have a board and meet the threshold.",
     "version": "0.1",
     "buildTag": "latest",
     "input": "./input_schema.json",

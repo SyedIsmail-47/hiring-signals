@@ -13,7 +13,7 @@ import {
 const tracked = ['sales', 'engineering', 'marketing'];
 
 test('company state keys by domain and groups matched job IDs by function', () => {
-    assert.equal(companyStateKey('Stripe.COM'), 'company:stripe.com');
+    assert.equal(companyStateKey('Stripe.COM'), 'company-stripe.com');
     const state = buildCompanyState({
         domain: 'stripe.com',
         source: 'greenhouse',

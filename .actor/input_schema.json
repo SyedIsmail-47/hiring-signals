@@ -1,13 +1,13 @@
 {
     "title": "Hiring Signals + Verified Contacts",
-    "description": "Check public ATS boards for open roles in the functions you track. One company per row. Boards are public-by-design (Greenhouse, Lever, Ashby).",
+    "description": "Watch companies' public job boards and, when the hiring signal is strong enough, attach a checked department contact. One company per row.",
     "type": "object",
     "schemaVersion": 1,
     "properties": {
         "companies": {
             "title": "Companies",
             "type": "array",
-            "description": "Companies to check. Each row needs a display name and a domain used to derive the ATS board token.",
+            "description": "Companies to watch. Each row needs a name and a website domain. The run looks up that company's public Greenhouse, Lever, or Ashby job board.",
             "editor": "schemaBased",
             "minItems": 1,
             "default": [
@@ -28,14 +28,14 @@
                     "name": {
                         "title": "Company name",
                         "type": "string",
-                        "description": "Display name, also used as a board-token candidate.",
+                        "description": "How this company should appear in the results.",
                         "editor": "textfield",
                         "minLength": 1
                     },
                     "domain": {
                         "title": "Domain",
                         "type": "string",
-                        "description": "Company hostname, such as stripe.com. www is ignored.",
+                        "description": "The company's website, such as stripe.com. https:// and www are ignored.",
                         "editor": "textfield",
                         "minLength": 1
                     }
@@ -46,7 +46,7 @@
         "trackedFunctions": {
             "title": "Tracked functions",
             "type": "array",
-            "description": "Role functions to count toward a hiring signal. Matching is keyword-based on the job title. Allowed values: sales, engineering, marketing, product, design, data, finance, people, operations, support, legal.",
+            "description": "Which kinds of open roles count toward a hiring signal. Choose from sales, engineering, marketing, product, design, data, finance, people, operations, support, and legal.",
             "editor": "stringList",
             "default": ["sales", "engineering", "marketing"],
             "prefill": ["sales", "engineering", "marketing"]
@@ -54,7 +54,7 @@
         "signalThreshold": {
             "title": "Signal threshold",
             "type": "integer",
-            "description": "Minimum number of open roles that match a tracked function before the company counts as a hiring signal. Contact lookup (later) only runs when this is met.",
+            "description": "How strong the hiring signal must be before a department contact is checked. New roles count more than roles that were already open. Companies below this score are still saved, and they are not charged.",
             "default": 2,
             "prefill": 2,
             "minimum": 1,
